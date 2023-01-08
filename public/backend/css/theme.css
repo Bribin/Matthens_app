@@ -1,0 +1,38 @@
+/*!
+ * Theme Name: Default
+ * Package : DashLite
+ * Author: Softnio
+ * Author URI: http://themeforest.net/user/softnio
+ * Version	 :	1.0.0
+ * Updated	 :	07.23.2020
+**/
+body {
+  background: #f0f3f6 !important;
+}
+
+.empty-state {
+  padding: 50px 0;
+}
+
+.form-label span {
+  color: #8b0000;
+}
+
+.parsley-errors-list li {
+  font-size: 11px;
+  padding-top: 5px;
+  color: red;
+}
+
+.author-box {
+  padding: 30px;
+}
+
+.course-item {
+  max-height: 420px;
+}
+
+.homepage-hero {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(255, 111, 80, 0.21) 0, rgba(255, 190, 92, 0.21) 50%, rgba(255, 238, 176, 0.21) 100%);
+  background-repeat: no-repeat;
+}
