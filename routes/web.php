@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 //
 Auth::routes();
 
+Route::get('/migrate', function(){
+    \Artisan::call('migrate');
+    dd('migrated!');
+});
+
+
 Route::get('/', function () {
 
     $courses = \App\Models\Course::with('batches')->paginate(6);
