@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exam extends Model
 {
+    protected $guarded = [];
+    public $incrementing = false;
     protected $primaryKey = 'ExamCode';
 
     use HasFactory;

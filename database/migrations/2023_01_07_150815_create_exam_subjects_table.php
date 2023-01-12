@@ -23,6 +23,7 @@ return new class extends Migration
             $table->bigInteger('CreatedUser')->unsigned()->index();
             $table->timestamps();
             $table->softDeletes();
+            $table->primary('ExamSubjectCode');
             $table->foreign('CreatedUser')->references('id')->on('users')->onDelete('cascade');
         });
 

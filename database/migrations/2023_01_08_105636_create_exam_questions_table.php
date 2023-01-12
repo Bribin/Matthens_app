@@ -29,7 +29,8 @@ return new class extends Migration
             $table->integer('SortOrder')->default('0');
             $table->string('PreviousYearCode')->nullable();
             $table->bigInteger('CreatedUser')->unsigned()->index();
-            $table->foreign(['ExamCode','PaperCode'])->references(['ExamCode','PaperCode'])->on('exam_papers')->onDelete('cascade');
+            $table->foreign(['ExamCode','PaperCode','SectionCode'])->references(['ExamCode','PaperCode','SectionCode'])->on('exam_sections')->onDelete('cascade');
+            $table->foreign('ExamSubjectCode')->references('ExamSubjectCode')->on('exam_subjects')->onDelete('cascade');
             $table->foreign('CreatedUser')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();

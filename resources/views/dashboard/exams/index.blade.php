@@ -74,12 +74,15 @@
                                         <a href="{{ url('/dashboard/exams/'.$exam->id.'/edit') }}" class="project-title">
                                             <div class="user-avatar sq bg-purple"><span>RD</span></div>
                                             <div class="project-info">
-                                                <h6 class="title">{{ $exam->name }}</h6>
+                                                <h6 class="title">{{ $exam->Name }}</h6>
                                             </div>
                                         </a>
                                     </td>
                                     <td class="nk-tb-col tb-col-lg">
-                                        <span>{{ $exam->code }}</span>
+                                        <span>{{ $exam->NoofExams }}</span>
+                                    </td>
+                                    <td class="nk-tb-col tb-col-lg">
+                                        <span>{{ $exam->IsSingleExam }}</span>
                                     </td>
 
 

@@ -2,7 +2,10 @@
 
 use App\Models\Exam;
 use Illuminate\Support\Facades\Route;
-
+use App\Imports\ExamImport;
+use App\Imports\ExamPaperImport;
+use App\Imports\ExamSectionImport;
+use Maatwebsite\Excel\Facades\Excel;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,11 +20,27 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', function () {
-
-    $courses = \App\Models\Course::with('batches')->paginate(6);
-    return view('welcome',compact('courses'));
+    $exams = App\Models\Exam::orderBy('id', 'ASC')->paginate(10);
+    return view('welcome',compact('exams'));
 
 });
+
+Route::get('/exams/{slug}/exam-papers', function ($slug) {
+
+    $exampapers = \App\Models\ExamPaper::where('ExamCode', $slug)->get();
+
+    return view('users.exam-single',compact('exampapers'));
+//    return view('users.course-single');
+});
+
+
+Route::get('/exams/{slug}/start-exam', function ($slug) {
+
+    return view('users.exam');
+//    return view('users.course-single');
+});
+
+
 
 Route::get('/live-bootcamps', function () {
     $courses = \App\Models\Course::with('batches')->paginate(4);
@@ -159,6 +178,32 @@ Route::get('/courses', function () {
     $courses = \App\Models\Course::with('batches')->paginate(6);
     return view('users.courses',compact('courses'));
 });
+Route::get('/importExams', function () {
+
+    Excel::import(new \App\Imports\ExamImport(), 'exams.xlsx');
+
+    return redirect('/')->with('success', 'All good!');
+});
+
+Route::get('/importExamPapers', function () {
+
+    Excel::import(new \App\Imports\ExamPaperImport(), 'exam_papers.xlsx');
+
+    return redirect('/')->with('success', 'All good!');
+});
+
+Route::get('/importExamSection', function () {
+
+    Excel::import(new \App\Imports\ExamSectionImport(), 'exam_sections.xlsx');
+
+    return redirect('/')->with('success', 'All good!');
+});
+
+
+
+
+
+
 
 
 Route::get('/course/{slug}/overview', function ($slug) {

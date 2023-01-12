@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExamPaper extends Model
 {
+    protected $guarded = [];
     use HasFactory;
 }

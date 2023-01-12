@@ -15,35 +15,28 @@
         </div>
     </div>
 </div><!-- .nk-block-head -->
-@if(count($courses ) > 0)
-    @foreach($courses as $course)
-       <div class="course-item">
+@if(count($exams ) > 0)
+    @foreach($exams as $exam)
+       <div class="course-item pb-4">
            <div class="col-sm-12 col-lg-12 col-xxl-12">
                <div class="card card-bordered   " style="background: #E1EAFF url('/public/backend/images/ux-cover.svg')">
                    <div class="row">
-                       <div class="col-lg-4">
-                           <div  class="author-box">
-                               <img height="300"  src="{{ asset('backend/images/course_cover.svg') }}" >
-                           </div>
-                       </div>
-                       <div class="col-lg-8">
+
+                       <div class="col-lg-8 ">
                            <div class="card-inner">
                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                   <a href="{{ url('/course/'.$course->slug.'/overview') }}" class="d-flex align-items-center">
+                                   <a href="{{ url('/exams/'.$exam->ExamCode.'/exam-papers') }}" class="d-flex align-items-center">
 
                                        <div >
-                                           <h3 class="title mb-1">{{ $course->title }}</h3>
-                                           <span class="sub-text">4 SubCategories</span>
+                                           <h3 class="title mb-1">{{ $exam->Name }}</h3>
+                                           <span class="sub-text">{{ $exam->Description }}</span>
                                        </div>
                                    </a>
                                </div>
-                               <p>{!!$course->description  !!} </p>
+                               <p>{!!$exam->description  !!} </p>
                                <ul class="d-flex flex-wrap g-1">
-                                   <li><span class="badge badge-dim bg-primary">Photoshop</span></li>
-                                   <li><span class="badge badge-dim bg-danger">Adobe Illustrator</span></li>
-                                   <li><span class="badge badge-dim bg-info">Logo Design</span></li>
-                                   <li><span class="badge badge-dim bg-warning">Drawing</span></li>
-                                   <li><span class="badge badge-dim bg-secondary">Figma</span></li>
+                                   <li><span class="badge badge-dim bg-primary">{{ $exam->ExamCode }}</span></li>
+
                                </ul>
                                <div class="mt-5">
                                    <a href="#" class="btn btn-primary ">Start Course</a>
@@ -56,7 +49,7 @@
            </div>
        </div>
     @endforeach
-    {{ $courses->links() }}
+    {{ $exams->links() }}
 @else
 
 @endif

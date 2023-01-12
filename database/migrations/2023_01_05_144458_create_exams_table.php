@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('IsSectionTimeLimit')->default('N');
             $table->string('IsSingleExam')->default('Y');
             $table->float('TimeSectionLimit')->default('0');
-            $table->bigInteger('CreatedUser')->unsigned()->index();
+            $table->bigInteger('TimeSectionLimit')->unsigned()->index();
             $table->float('Price')->default('0.00');
             $table->float('DiscountedPrice')->default('0.00');
             $table->primary('ExamCode');
