@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/matthens/public_html
+    - export DEPLOYPATH=/home/insihgnp/app.matthens.com/
     - /bin/cp -R * $DEPLOYPATH

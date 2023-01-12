@@ -19,6 +19,12 @@ use Maatwebsite\Excel\Facades\Excel;
 //
 Auth::routes();
 
+Route::get('/migrate', function(){
+    \Artisan::call('migrate');
+    dd('migrated!');
+});
+
+
 Route::get('/', function () {
     $exams = App\Models\Exam::orderBy('id', 'ASC')->paginate(10);
     return view('welcome',compact('exams'));
