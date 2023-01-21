@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('AccountType');
             $table->string('IsQuestionBlob');
             $table->text('Description')->nullable();
-            $table->binary('BlobDescription');
-            $table->string('QuestionPath');
+            $table->binary('BlobDescription')->nullable();
+            $table->string('QuestionPath')->nullable();
             $table->integer('SortOrder')->default('0');
             $table->string('PreviousYearCode')->nullable();
             $table->bigInteger('CreatedUser')->unsigned()->index();

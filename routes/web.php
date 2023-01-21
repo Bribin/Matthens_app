@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Imports\ExamImport;
 use App\Imports\ExamPaperImport;
 use App\Imports\ExamSectionImport;
+use App\Imports\ExamQuestionImport;
 use Maatwebsite\Excel\Facades\Excel;
 /*
 |--------------------------------------------------------------------------
@@ -33,19 +34,39 @@ Route::get('/', function () {
 
 Route::get('/exams/{slug}/exam-papers', function ($slug) {
 
-    $exampapers = \App\Models\ExamPaper::where('ExamCode', $slug)->get();
+    $exampapers   = \App\Models\ExamPaper::where('ExamCode', $slug)->get();
 
     return view('users.exam-single',compact('exampapers'));
 //    return view('users.course-single');
 });
 
 
-Route::get('/exams/{slug}/start-exam', function ($slug) {
+//Route::get('/exams/{slug}/start-exam', function ($slug) {
+//////    $examsections = \App\Models\ExamSection::where('PaperCode', $slug)->get();
+//////
+//////    $examquestions = \App\Models\ExamQuestion::where('PaperCode', $slug)->get();
+////    return view('users.exam',compact('examquestions','examsections') );
+////    return view('users.course-single');
+//});
 
-    return view('users.exam');
-//    return view('users.course-single');
+Route::get('/exams/{slug}/start-exam', function ($slug) {
+    $ExamSections = \App\Models\ExamSection::where('PaperCode', $slug)->get();
+    $ExamPaper = \App\Models\ExamPaper::where('PaperCode', $slug)->get()->toArray();
+    $ExamQuestions = \App\Models\ExamQuestion::where('PaperCode', $slug)->with('examanswers')->get();
+
+
+
+    return view('users.exam',compact('ExamQuestions','ExamSections','ExamPaper') );
+
 });
 
+Route::get('/exams/submit-exam', function (Request $request) {
+
+
+
+    return $request->input();;
+
+});
 
 
 Route::get('/live-bootcamps', function () {
@@ -205,8 +226,26 @@ Route::get('/importExamSection', function () {
     return redirect('/')->with('success', 'All good!');
 });
 
+Route::get('/importQuestionSection', function () {
 
+    Excel::import(new \App\Imports\ExamQuestionImport(), 'exam_questions.xlsx');
 
+    return redirect('/')->with('success', 'All good!');
+});
+
+Route::get('/importExamSubjects', function () {
+
+    Excel::import(new \App\Imports\ExamSubjectImport(), 'exam_subjects.xlsx');
+
+    return redirect('/')->with('success', 'All good!');
+});
+
+Route::get('/importQuestionAnswers', function () {
+
+    Excel::import(new \App\Imports\ExamAnswersImport(), 'exam_answers.xlsx');
+
+    return redirect('/')->with('success', 'All good!');
+});
 
 
 

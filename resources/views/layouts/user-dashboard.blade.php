@@ -185,6 +185,58 @@
 <script src="{{ asset('backend/js/bundle.js') }}"></script>
 {{--<script src="{{ asset('js/parsley.min.js') }}"></script>--}}
 <script src="{{ asset('backend/js/scripts.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        CoundownTimer(parseInt($("#TestDuration").val()));
+
+
+
+
+    });
+
+    function CoundownTimer(e) {
+        var t = 60 * e;
+
+
+        myInterval = setInterval(function () {
+            myTimeSpan = 1e3 * t, $(".timer-title").text(GetTime(myTimeSpan)), t < 600 ? ($(".timer-title").addClass("time-ending"), $(".timer-title").removeClass("time-started")) : ($(".timer-title").addClass("time-started"), $(".timer-title").removeClass("time-ending")), t > 0 ? t -= 1 : CleartTimer()
+        }, 1e3)
+    }
+    function CleartTimer() {
+        clearInterval(myInterval), $("title").text("Time Out"), $("#btnYesSubmitConfirm").trigger("click")
+    }
+
+    function GetTime(e) {
+        parseInt(e % 1e3 / 100);
+        var t = parseInt(e / 1e3 % 60),
+            a = parseInt(e / 6e4 % 60),
+            n = parseInt(e / 36e5 % 24);
+        return (n = n < 10 ? "0" + n : n) + ":" + (a = a < 10 ? "0" + a : a) + ":" + (t < 10 ? "0" + t : t)
+    }
+
+    $(function() {
+
+        $(".hideShow").first().css("display", "block");
+
+        // $(document).on("click", "#91", function(){
+        //     alert();
+        // });
+
+        // $( document ).on( "click", ".next", function() {
+        //     $(this).closest('.hideShow').hide().next().show();
+        // });
+
+        $(".test-ques").click(function () {
+            var e = $(".test-questions").find("li.active").find("a");
+            $(this).parent().addClass("active")
+            alert("#TestDuration");
+            // $(".test-questions").find("li").removeClass("active"),
+            //     $(this).parent().addClass("active"), OpenCurrentQue($(this))
+            //   });
+
+        });
+    });
+</script>
 </body>
 
 </html>
