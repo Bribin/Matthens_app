@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="986d7b64-7bac-42f1-8140-9a6c1409ae45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UserAnswerController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/UserAnswer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2023_01_23_142800_create_user_answers_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ExamPaper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ExamPaper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2023_01_08_141931_create_previous_years_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_01_08_141931_create_previous_years_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/user-dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/user-dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/exam.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/exam.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2023_01_23_142800_create_user_answers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_01_23_142800_create_user_answers_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -310,7 +301,7 @@
       <workItem from="1673883593765" duration="7632000" />
       <workItem from="1674133655598" duration="32507000" />
       <workItem from="1674743613124" duration="11052000" />
-      <workItem from="1674888553480" duration="1728000" />
+      <workItem from="1674888553480" duration="2801000" />
     </task>
     <servers />
   </component>

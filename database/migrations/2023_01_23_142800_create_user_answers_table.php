@@ -26,8 +26,8 @@ return new class extends Migration
             $table->softDeletes();
             $table->primary(['UserAnswerID','ExamCode','PaperCode']);
             $table->foreign('UserID')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ExamCode')->references('ExamCode')->on('exams')->onDelete('cascade');
-            $table->foreign('PaperCode')->references('PaperCode')->on('exam_papers')->onDelete('cascade');
+//            $table->foreign('ExamCode','PaperCode')->references('ExamCode')->on('exams')->onDelete('cascade');
+            $table->foreign(['ExamCode','PaperCode'])->references(['ExamCode','PaperCode'])->on('exam_papers')->onDelete('cascade');
 
 
         });
