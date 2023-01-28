@@ -7,6 +7,7 @@ use App\Imports\ExamPaperImport;
 use App\Imports\ExamSectionImport;
 use App\Imports\ExamQuestionImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,45 +50,9 @@ Route::get('/exams/{slug}/exam-papers', function ($slug) {
 ////    return view('users.course-single');
 //});
 
-Route::get('/exams/{slug}/start-exam', function ($slug) {
-    $ExamSections = \App\Models\ExamSection::where('PaperCode', $slug)->get();
-    $ExamPaper = \App\Models\ExamPaper::where('PaperCode', $slug)->get()->toArray();
-    $ExamQuestions = \App\Models\ExamQuestion::where('PaperCode', $slug)->with('examanswers')->get();
 
 
 
-    return view('users.exam',compact('ExamQuestions','ExamSections','ExamPaper') );
-
-});
-
-Route::get('/exams/submit-exam', function (Request $request) {
-
-
-
-    return $request->input();;
-
-});
-
-
-Route::get('/live-bootcamps', function () {
-    $courses = \App\Models\Course::with('batches')->paginate(4);
-    return view('courses',compact('courses'));
-});
-
-Route::get('/our-story', function () {
-    return view('our-story');
-});
-
-Route::get('/live-bootcamps/{id}/schedule', function ( $id) {
-
-
-    $course = \App\Models\Course::with('batches')->findOrFail($id);
-
-
-
-
-    return view('schedules',compact('course'));
-});
 
 
 
@@ -96,38 +61,14 @@ Route::get('/account', function () {
 });
 
 
-Route::get('/job-board', function () {
-
-    $jobs = \App\Models\Job::paginate(10);
-    return view('job-board',compact('jobs'));
-});
 
 
 
-
-Route::get('/cart', function () {
-    return view('cart');
-});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('company/matthens-design-academy', function () {
-    return view('about');
-});
-Route::get('company/stories', function () {
-    return view('stories');
-});
-Route::get('company/media-kit', function () {
-    return view('media-kit');
-});
-Route::get('company/contact-us', function () {
-    return view('contact');
-});
 
-Route::get('legal/cancellation-and-refund-policy', function () {
-    return view('privacy-policy');
-});
 
 
 Route::get('legal/terms-and-conditions', function () {
@@ -274,6 +215,22 @@ Route::group(['middleware'=>['auth']], function(){
         return view('users.profile');
     });
 
+    Route::get('/exams/{slug}/start-exam', function ($slug) {
+
+        $user = \Illuminate\Support\Facades\Auth::id();
+        $ExamSections = \App\Models\ExamSection::where('PaperCode', $slug)->get();
+        $ExamPaper = \App\Models\ExamPaper::where('PaperCode', $slug)->get()->toArray();
+        $ExamQuestions = \App\Models\ExamQuestion::where('PaperCode', $slug)->with('examanswers')->get();
+
+
+
+        return view('users.exam',compact('ExamQuestions','ExamSections','ExamPaper','user') );
+
+    });
+
+    Route::post('/exams/submit-exam', function (Request $request) {
+        return $request->all();;
+    });
 
 
 

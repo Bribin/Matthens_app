@@ -14,19 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('previous_years', function (Blueprint $table) {
-            $table->id()->from('100');
-            $table->string('PreviousYearCode')->unsigned()->index();
+            $table->integer('id')->from('100')->unique();
+            $table->string('PreviousYearCode');
+            $table->primary('PreviousYearCode');
             $table->string('Name');
-            $table->string('IsActive');
-            $table->string('AnswerPath');
+            $table->string('IsActive')->default('0');;
             $table->integer('SortOrder')->default('0');
             $table->bigInteger('CreatedUser')->unsigned()->index();
-            $table->foreign('PreviousYearCode')->references('PreviousYearCode')->on('exam_questions')->onDelete('cascade');
             $table->foreign('CreatedUser')->references('id')->on('users')->onDelete('cascade');
-            $table->primary('PreviousYearCode');
+//            $table->foreign('PreviousYearCode')->references('PreviousYearCode')->on('exam_questions')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
+
         });
+
 
         Schema::table('previous_years', function (Blueprint $table) {
             $table->integer('id', 50)->autoIncrement()->change();

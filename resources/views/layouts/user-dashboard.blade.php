@@ -189,9 +189,6 @@
     $(document).ready(function () {
         CoundownTimer(parseInt($("#TestDuration").val()));
 
-
-
-
     });
 
     function CoundownTimer(e) {
@@ -214,25 +211,47 @@
         return (n = n < 10 ? "0" + n : n) + ":" + (a = a < 10 ? "0" + a : a) + ":" + (t < 10 ? "0" + t : t)
     }
 
-    $(function() {
 
-        $(".hideShow").first().css("display", "block");
 
-        // $(document).on("click", "#91", function(){
-        //     alert();
-        // });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var list = $('#list').find('>li');
 
-        // $( document ).on( "click", ".next", function() {
-        //     $(this).closest('.hideShow').hide().next().show();
-        // });
+        $("ul#list li:first").addClass("selected");
+        $("#prev,#next").click(function (event) {
 
-        $(".test-ques").click(function () {
-            var e = $(".test-questions").find("li.active").find("a");
-            $(this).parent().addClass("active")
-            alert("#TestDuration");
-            // $(".test-questions").find("li").removeClass("active"),
-            //     $(this).parent().addClass("active"), OpenCurrentQue($(this))
-            //   });
+            var $new, $selected = $(".selected");
+
+            $new = (event.target.id == "prev") ? ($selected.index() == 0 ? list.last() : $selected.prev()) : ($selected.index() == list.last().index() ? list.first() : $selected.next());
+            $selected.removeClass("selected");
+            $new.addClass("selected");
+            $new.addClass("visited");
+            $('.question-block').hide().filter($new.data('target')).show();
+
+        });
+
+
+        $("#save").click(function (event) {
+            var $selected = $(".selected");
+            $selected.removeClass('review');
+            $selected.addClass("save");
+
+        });
+
+        $("#review").click(function (event) {
+            var $selected = $(".selected");
+            $selected.removeClass('save');
+            $selected.addClass("review");
+
+        });
+
+
+        $("#list li").click(function (event) {
+            var target = $(this).addClass('selected').data('target');
+            $('.question-block').hide().filter(target).show();
+            $(this).siblings().removeClass('selected');
+            $(this).addClass('selected').addClass('visited');
 
         });
     });
