@@ -217,22 +217,58 @@ Route::group(['middleware'=>['auth']], function(){
 
     Route::get('/exams/{slug}/start-exam', function ($slug) {
 
-        $user = \Illuminate\Support\Facades\Auth::id();
+        $UserId = \Illuminate\Support\Facades\Auth::id();
+
+        $data = [
+            'UserId' => $UserId,
+            'ExamStartTime' => date('Y-m-d H:i:s'),
+            'ExamEndTime' => date('Y-m-d H:i:s'),
+
+        ];
+
+
+
         $ExamSections = \App\Models\ExamSection::where('PaperCode', $slug)->get();
         $ExamPaper = \App\Models\ExamPaper::where('PaperCode', $slug)->get()->toArray();
         $ExamQuestions = \App\Models\ExamQuestion::where('PaperCode', $slug)->with('examanswers')->get();
 
 
 
-        return view('users.exam',compact('ExamQuestions','ExamSections','ExamPaper','user') );
+        return view('users.exam',compact('ExamQuestions','ExamSections','ExamPaper','data') );
 
     });
 
     Route::post('/exams/submit-exam', function (Request $request) {
-        return $request->all();;
+
+        $answers = $request->get('answers');
+        $answers =  json_encode($answers);
+
+        $answer = new \App\Models\UserAnswer();
+        $answer->UserAnswerID      = Str::random(12);
+        $answer->ExamCode          = $request->get('ExamCode');
+        $answer->PaperCode         = $request->get('PaperCode');
+        $answer->UserId            = $request->get('UserId');
+        $answer->Answer            = $answers;
+        $answer->ExamStartTime     = $request->get('ExamStartTime');
+        $answer->ExamEndTime       = $request->get('ExamEndTime');
+        $answer->save();
+
+        $CorrectAnswers = \App\Models\ExamQuestion::where('PaperCode', $answer->PaperCode )->with('examanswers')->get();
+
+
+
+
+
+
+
+
     });
 
 
+
+    Route::get('/check-answers/{slug}/start-exam', function ($slug) {
+        $ExamQuestions = \App\Models\ExamQuestion::where('PaperCode', $slug)->with('examanswers')->get();
+    });
 
 
 });

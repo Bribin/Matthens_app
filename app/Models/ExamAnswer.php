@@ -15,4 +15,10 @@ class ExamAnswer extends Model
     {
         return $this->belongsTo(ExamQuestion::class,'ExamQuestionID');
     }
+
+
+    public function CorrectAnswers()
+    {
+        return $this->belongsTo(ExamQuestion::class,'ExamQuestionID');
+    }
 }

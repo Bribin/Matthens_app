@@ -3,7 +3,6 @@
 @section('content')
 
     <div class="nk-block nk-block-lg" style="">
-
         <div class="row">
             <div class="col-lg-6">
                 <div class="nk-block-head">
@@ -18,7 +17,6 @@
                 </div>
                 <div class="card card-bordered">
                     <div class="card-inner">
-
                         <form action="{{ route('register') }}"  data-parsley-validate="data-parsley-validate" method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="row g-4">

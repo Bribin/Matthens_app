@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="986d7b64-7bac-42f1-8140-9a6c1409ae45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2023_01_23_142800_create_user_answers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_01_23_142800_create_user_answers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ExamAnswer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ExamAnswer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/UserAnswer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserAnswer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/user-dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/user-dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/exam.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/exam.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,7 +306,7 @@
       <workItem from="1673883593765" duration="7632000" />
       <workItem from="1674133655598" duration="32507000" />
       <workItem from="1674743613124" duration="11052000" />
-      <workItem from="1674888553480" duration="2801000" />
+      <workItem from="1674888553480" duration="12472000" />
     </task>
     <servers />
   </component>
@@ -482,17 +487,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/users/exam.blade.php</url>
-          <line>238</line>
+          <line>235</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/users/exam.blade.php</url>
-          <line>188</line>
+          <line>185</line>
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/users/exam.blade.php</url>
-          <line>239</line>
+          <line>236</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

@@ -187,7 +187,7 @@
 <script src="{{ asset('backend/js/scripts.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        CoundownTimer(parseInt($("#TestDuration").val()));
+        CoundownTimer(parseInt($("#ExamDuration").val()));
 
     });
 
@@ -226,7 +226,7 @@
             $new = (event.target.id == "prev") ? ($selected.index() == 0 ? list.last() : $selected.prev()) : ($selected.index() == list.last().index() ? list.first() : $selected.next());
             $selected.removeClass("selected");
             $new.addClass("selected");
-            $new.addClass("visited");
+            $new.addClass("not-answered");
             $('.question-block').hide().filter($new.data('target')).show();
 
         });
@@ -234,15 +234,15 @@
 
         $("#save").click(function (event) {
             var $selected = $(".selected");
-            $selected.removeClass('review');
-            $selected.addClass("save");
+            $selected.removeClass('answered-review');
+            $selected.addClass("answered");
 
         });
 
         $("#review").click(function (event) {
             var $selected = $(".selected");
-            $selected.removeClass('save');
-            $selected.addClass("review");
+            $selected.removeClass('answered');
+            $selected.addClass("answered-review");
 
         });
 
@@ -251,7 +251,7 @@
             var target = $(this).addClass('selected').data('target');
             $('.question-block').hide().filter(target).show();
             $(this).siblings().removeClass('selected');
-            $(this).addClass('selected').addClass('visited');
+            $(this).addClass('selected').addClass('not-answered');
 
         });
     });

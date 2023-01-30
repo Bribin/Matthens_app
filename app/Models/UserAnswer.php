@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserAnswer extends Model
 {
+    protected $casts = [
+        'answer' => 'array',
+    ];
     use HasFactory;
 }

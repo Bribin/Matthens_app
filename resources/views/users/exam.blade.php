@@ -133,7 +133,7 @@
     .selected {
         background: #6ec100 !important;
         color: #fff;
-        border: 3px solid #555;
+
     }
 
     .visited{
@@ -141,13 +141,7 @@
         color: #fff;
     }
 
-    .question-block{
-        padding: 30px;
-        border: 1px solid #f9f9f9;
-        border-radius: 5px;
-        background: #f8f8f8;
-        margin: 20px;
-    }
+
 
     .question-block { display: block; }
     .question-block ~ .question-block { display: none; }
@@ -178,10 +172,13 @@
             <div class="card card-bordered">
                 <div class="card-header">Featured</div>
                 <div class="card-inner">
-                    <input type="hidden" id="TestDuration" name="ExamDuration" value="{{ $ExamPaper[0]['TotalMinutes']  }}" />
-                    <input type="hidden" id="ExamPaperCode" name="ExamPaperCode" value="{{ $ExamPaper[0]['PaperCode']  }}" />
-                    <input type="hidden" id="ExamExamCode" name="ExamExamCode" value="{{ $ExamPaper[0]['ExamCode']  }}" />
 
+                    <input type="hidden" id="ExamDuration" name="ExamDuration" value="{{ $ExamPaper[0]['TotalMinutes']  }}" />
+                    <input type="hidden" id="PaperCode" name="PaperCode" value="{{ $ExamPaper[0]['PaperCode']  }}" />
+                    <input type="hidden" id="ExamCode" name="ExamCode" value="{{ $ExamPaper[0]['ExamCode']  }}" />
+                    <input type="hidden" id="UserId" name="UserId" value="{{ $data['UserId'] }}" />
+                    <input type="hidden" id="ExamStartTime" name="ExamStartTime" value="{{ $data['ExamStartTime'] }}" />
+                    <input type="hidden" id="ExamEndTime" name="ExamEndTime" value="{{ $data['ExamEndTime'] }}" />
                   <h4> Time Left :  <div class="timer-title"></div> </h4>
                 </div>
             </div>
